@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+"""Factorize as many numbers as possible into a product of two smaller numbers"""
+
+
+import sys
+
+file = sys.argv[1]
+
+with open(file) as fil:
+    lines = fil.readlines()
+
+for line in lines:
+    if int(line) % 2 == 0:
+        half = int(line) // 2
+        print("{}={}*{}".format(int(line), half, 2))
+    elif int(line) % 3 == 0:
+        half = int(line) // 3
+        print("{}={}*{}".format(int(line), half, 3))
+    elif int(line) % 5 == 0:
+        half = int(line) // 5
+        print("{}={}*{}".format(int(line), half, 5))
+    elif int(line) % 7 == 0:
+        half = int(line) // 7
+        print("{}={}*{}".format(int(line), half, 7))
+    else:
+        fact1 = 2
+        while int(line) % fact1:
+            fact1 += 1
+        fact2 = int(line) / fact1
+        print("{}={:.0f}*{}".format(int(line), fact2, fact1))
